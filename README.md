@@ -1,24 +1,65 @@
-### Setup
+# Matrix plugin
+Данный плагин добавляет большинство команд на ваш сервер.
 
-Clone this repository first.
-To edit the plugin display name and other data, take a look at `src/main.resources/plugin.json`.
-Edit the name of the project itself by going into `settings.gradle`.
+Возможности плагина:<br>
 
-### Basic Usage
+Связь Discord и Mindustry, а именно:
+ - Отправка сообщений Discord в игру
+ - Отправка сообщений игры в Discord
+ - Логгирование прописанных команд
+ - Сообщения об заходе/выходе игрока
+ - Просмотр содержимого ядра в Discord
+ 
+Новые команды для админитраторов:
+ - Спавн руды с указанным радиусом
+ - Установка любого блока
+ - Включение/выключение бесконечных ресурсов
+ - JS команда в самой игре.
+ - Уведомление для всего сервера
+ 
+Помимо этого есть другие фитчи:
+ - Анимированный никнейм ([animated])
+ - Авто модерация слов
+ - Надпись вверху экрана
+ - Игроки могут в PvP изменять цвет команды
+ - Полностью настраиваемые сообщения и команды
 
-See `src/main/java/example/ExamplePlugin.java` for some basic commands and event handlers.  
-Every main plugin class must extend `Plugin`. Make sure that `plugin.json` points to the correct main plugin class.
+## Installation
 
-Please note that the plugin system is in beta, and as such is subject to changes.
+Помести плагин в ``<server folder location>/config/mods`` папку.<br>
+Запусти сервер. Сгенерируются конфиги.<br>
+Отредактируй конфиг в ``<server folder location>/config/mods/Matrix/config.properties`` папке.<br>
+Наслаждайся работой плагина
 
-### Building a Jar
+## Планы Matrix 0.1
+- [ ] Администрирование
+  - [ ] Мьюты
+  - [ ] Временные баны
+- [ ] Discord
+  - [ ] Статистика
+  - [ ] Загрузка карт через сообщение
+  - [ ] Консоль
+- [ ] Настройка прав (Через отдельный плагин)
+- [ ] Команды
+  - [ ] Телепортация к игрокам или в точку /tp
+  - [ ] Кастомный /help
+  - [ ] Личные сообщения /m
+- [ ] Оптимизация кода
+- [ ] Привязка базы данных
 
-`gradlew jar` / `./gradlew jar`
+## Клиентские команды
 
-Output jar should be in `build/libs`.
+| Команда | Параметры | Описание | Права
+|:---|:---|:---|:--- |
+| setteam | <цвет команды> | Устанавливает команду по цвету | Игрок |
+| spawnore | <радиус> <название руды> | Спавнит жилу руды с радиусом | Администратор |
+| setblock | <название блока из Blocks.java> | Ставит блок под игроком | Администратор |
+| infiniteresources | <on/off> | Включает бесконечные ресурсы на карте | Администратор |
+| bc | <сообщение> | Отправляет всплывающее окно игрокам | Администратор |
+| js | <код> | Выполняет js код | Администратор |
 
+## Команды сервера
 
-### Installing
-
-Simply place the output jar from the step above in your server's `config/mods` directory and restart the server.
-List your currently installed plugins/mods by running the `mods` command.
+| Command | Parameter | Description |
+|:---|:---|:--- |
+| ping |  | Возращает pong! |
