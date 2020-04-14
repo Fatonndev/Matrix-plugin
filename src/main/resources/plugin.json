@@ -1,0 +1,7 @@
+{
+  "name": "Matrix",
+  "author": "KeviTV",
+  "main": "matrix.Main",
+  "description": "A plugin to demonstrate some basic features.",
+  "version": 0.4
+}
