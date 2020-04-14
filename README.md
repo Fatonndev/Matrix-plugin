@@ -1,3 +1,6 @@
+> # Link to Discord support server
+> https://discord.gg/ZYjxmYP
+
 # Matrix plugin
 This plugin adds most commands to your server.
 
