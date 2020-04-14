@@ -1,65 +1,65 @@
 # Matrix plugin
-Данный плагин добавляет большинство команд на ваш сервер.
+This plugin adds most commands to your server.
 
-Возможности плагина:<br>
+Features of the plugin:<br>
 
-Связь Discord и Mindustry, а именно:
- - Отправка сообщений Discord в игру
- - Отправка сообщений игры в Discord
- - Логгирование прописанных команд
- - Сообщения об заходе/выходе игрока
- - Просмотр содержимого ядра в Discord
+The relationship between Discord and Mindustry, namely:
+ - Sending Discord messages to the game
+ - Sending game messages to Discord
+ - Logging of registered commands
+ - Messages about the player's entry/exit
+ - View the contents of the core in the shell
  
-Новые команды для админитраторов:
- - Спавн руды с указанным радиусом
- - Установка любого блока
- - Включение/выключение бесконечных ресурсов
- - JS команда в самой игре.
- - Уведомление для всего сервера
+New commands for adminitrators:
+ - Spawn of ore with the specified radius
+ - Installation of any unit
+ - Enable / disable infinite resources
+ - JS command in the game itself.
+ - Notification for the entire server
  
-Помимо этого есть другие фитчи:
- - Анимированный никнейм ([animated])
- - Авто модерация слов
- - Надпись вверху экрана
- - Игроки могут в PvP изменять цвет команды
- - Полностью настраиваемые сообщения и команды
+In addition, there are other fitches:
+ - Animated nickname ([animated])
+ - Auto moderation of words
+ - Inscription at the top of the screen
+ - Players can change the team color in PvP
+ - Fully customizable messages and commands
 
 ## Installation
 
-Помести плагин в ``<server folder location>/config/mods`` папку.<br>
-Запусти сервер. Сгенерируются конфиги.<br>
-Отредактируй конфиг в ``<server folder location>/config/mods/Matrix/config.properties`` папке.<br>
-Наслаждайся работой плагина
+Put the plugin in ``<server folder location>/config/mods`` folder.<br>
+Start the server. Configs are generated.<br>
+Edit the config in the ``<server folder location>/config/mods/Matrix/config.properties`` folder.<br>
+Enjoy the plugin
 
-## Планы Matrix 0.1
-- [ ] Администрирование
-  - [ ] Мьюты
-  - [ ] Временные баны
+## Matrix 0.1 Plans
+- [ ] Administration
+  - [ ] Mutes
+  - [ ] Temporary bans
 - [ ] Discord
-  - [ ] Статистика
-  - [ ] Загрузка карт через сообщение
-  - [ ] Консоль
-- [ ] Настройка прав (Через отдельный плагин)
-- [ ] Команды
-  - [ ] Телепортация к игрокам или в точку /tp
-  - [ ] Кастомный /help
-  - [ ] Личные сообщения /m
-- [ ] Оптимизация кода
-- [ ] Привязка базы данных
+  - [ ] Statistics
+  - [ ] Loading maps via message
+  - [ ] Console
+- [ ] Setting up permissions (Via a separate plugin)
+- [ ] Teams
+  - [ ] Teleportation to the players or to the point /tp
+  - [ ] Custom /help
+  - [ ] Private message /m
+- [ ] Code optimization
+- [ ] Linking a database
 
-## Клиентские команды
+## Client commands
 
-| Команда | Параметры | Описание | Права
+| Command | Parameter | Description | Permission
 |:---|:---|:---|:--- |
-| setteam | <цвет команды> | Устанавливает команду по цвету | Игрок |
-| spawnore | <радиус> <название руды> | Спавнит жилу руды с радиусом | Администратор |
-| setblock | <название блока из Blocks.java> | Ставит блок под игроком | Администратор |
-| infiniteresources | <on/off> | Включает бесконечные ресурсы на карте | Администратор |
-| bc | <сообщение> | Отправляет всплывающее окно игрокам | Администратор |
-| js | <код> | Выполняет js код | Администратор |
+| setteam | <team color> | Sets the team by color | Player |
+| spawnore | <radius> <ore name> / Spawn a vein of ore with a radius | Administrator |
+| setblock | <block name from Blocks.java> | Puts a block under the player | Administrator |
+| infiniteresources | <on/off> | Enables infinite resources on the map | Administrator |
+| bc | <message> | Sends a pop-up window to players | Administrator |
+| js | <code> | Executes js code | Administrator |
 
-## Команды сервера
+## Server commands
 
 | Command | Parameter | Description |
 |:---|:---|:--- |
-| ping |  | Возращает pong! |
+| ping |  | Return pong! |
