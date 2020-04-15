@@ -27,12 +27,18 @@ public class Map {
 
         String[] args = Args[0].split(" ");
         Block block = Blocks.oreCopper;
+        int radius = 1;
 
-        int radius = Integer.parseInt(args[0]);
+        if(!args[0].matches("\\d+")) {
+            player.sendMessage(ConfigTranslate.get("cmd.spawnOre.error"));
+        } else if(Long.parseLong(args[0]) >= 1000) {
+            radius = 1000;
+        } else radius = Integer.parseInt(args[0]);
+
         int x = Math.round(player.x/8);
         int y = Math.round(player.y/8);
 
-        if(!args[1].isEmpty()) {
+        if(args.length>=2) {
             if (args[1].equals("lead")) block = Blocks.oreLead;
             if (args[1].equals("coal")) block = Blocks.oreCoal;
             if (args[1].equals("titanium")) block = Blocks.oreTitanium;
@@ -67,14 +73,16 @@ public class Map {
 
         Block block = Vars.content.blocks().find(b -> b.name.equals(args[0]));
 
-        Vars.world.tile(x, y).setBlock(block);
-        Vars.world.tile(x, y).setTeam(player.getTeam());
+        if (block != null) {
+            player.sendMessage(ConfigTranslate.get("cmd.setBlock.setted"));
+            Vars.world.tile(x, y).setBlock(block);
+            Vars.world.tile(x, y).setTeam(player.getTeam());
 
-        for(int id = 0; id < Vars.playerGroup.all().size; id++){
-            Log.info(id);
-            Player pl = Vars.playerGroup.all().get(id);
-            Vars.netServer.sendWorldData(pl);
-        }
+            for(int id = 0; id < Vars.playerGroup.all().size; id++){
+                Player pl = Vars.playerGroup.all().get(id);
+                Vars.netServer.sendWorldData(pl);
+            }
+        } else player.sendMessage(ConfigTranslate.get("cmd.setBlock.nosetted"));
     }
 
 }

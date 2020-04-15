@@ -58,7 +58,7 @@ public class Config {
             try (InputStream in = Config.class
                     .getClassLoader()
                     .getResourceAsStream("bundles/en_US.properties");
-                 OutputStream out = new FileOutputStream("config/mods/Matrix/bundles/ru_RU.properties")) {
+                 OutputStream out = new FileOutputStream("config/mods/Matrix/bundles/en_US.properties")) {
                 int data;
                 while ((data = in.read()) != -1) {
                     out.write(data);

@@ -1,3 +1,6 @@
+> # Link to Discord support server
+> https://discord.gg/ZYjxmYP
+
 # Matrix plugin
 This plugin adds most commands to your server.
 
@@ -52,7 +55,7 @@ Enjoy the plugin
 | Command | Parameter | Description | Permission
 |:---|:---|:---|:--- |
 | setteam | <team color> | Sets the team by color | Player |
-| spawnore | <radius> <ore name> / Spawn a vein of ore with a radius | Administrator |
+| spawnore | <radius> <ore name> | Spawn a vein of ore with a radius | Administrator |
 | setblock | <block name from Blocks.java> | Puts a block under the player | Administrator |
 | infiniteresources | <on/off> | Enables infinite resources on the map | Administrator |
 | bc | <message> | Sends a pop-up window to players | Administrator |

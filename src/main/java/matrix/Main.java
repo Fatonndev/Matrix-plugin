@@ -3,10 +3,7 @@ package matrix;
 import arc.*;
 import arc.util.*;
 
-import matrix.commands.client.Broadcast;
-import matrix.commands.client.SetBlock;
-import matrix.commands.client.SetTeam;
-import matrix.commands.client.SpawnOre;
+import matrix.commands.client.*;
 import matrix.discordBot.communication.SendToDiscord;
 import matrix.utils.*;
 
@@ -77,9 +74,9 @@ public class Main extends Plugin{
             // Запускаем проверку на запрещенные слова
             if(!msg.startsWith("/")) {
                 if (!event.player.isAdmin && Boolean.valueOf(Config.get("chatGuard"))) {
-                    if (!ChatGuard.check(msg)) SendToDiscord.send(nick, msg);
+                    if (!ChatGuard.check(msg)) SendToDiscord.send(nick, RemoveColors.main(msg));
                 } else {
-                    SendToDiscord.send(nick, msg);
+                    SendToDiscord.send(nick, RemoveColors.main(msg));
                 }
             } else SendToDiscord.log(nick, msg);
 
@@ -105,35 +102,15 @@ public class Main extends Plugin{
             SetBlock.main(player, args);
         });
         handler.<Player>register(ConfigTranslate.get("cmd.infiniteResources.name"), "<on/off>", ConfigTranslate.get("cmd.infiniteResources.description"), (args, player) -> {
-            if(player.isAdmin && Boolean.parseBoolean(Config.get("infiniteResourcesCmd")))
-                if(args[0].equals("on")) {
-                    Vars.state.rules.infiniteResources = true;
-                } else {
-                    Vars.state.rules.infiniteResources = false;
-                }
+            if(player.isAdmin && Boolean.parseBoolean(Config.get("infiniteResourcesCmd"))) {
+                InfiniteResources.set(args, player);
+            }
         });
         handler.<Player>register(ConfigTranslate.get("cmd.broadcast.name"), "<info...>", ConfigTranslate.get("cmd.infiniteResources.description"), (args, player) -> {
             if (player.isAdmin) Broadcast.bc(args, player);
         });
         handler.<Player>register("js", "<script...>", "Run arbitrary Javascript.", (arg, player) -> {
             if (player.isAdmin) Vars.mods.getScripts().runConsole(arg[0]);
-        });
-
-        //handler.removeCommand();
-
-        //register a whisper command which can be used to send other players messages
-        handler.<Player>register("whisper", "<player> <text...>", "Whisper text to another player.", (args, player) -> {
-            //find player by name
-            Player other = Vars.playerGroup.find(p -> p.name.equalsIgnoreCase(args[0]));
-
-            //give error message with scarlet-colored text if player isn't found
-            if(other == null){
-                player.sendMessage("[scarlet]No player by that name found!");
-                return;
-            }
-
-            //send the other player a message, using [lightgray] for gray text color and [] to reset color
-            other.sendMessage("[lightgray](whisper) " + player.name + ":[] " + args[1]);
         });
     }
 }

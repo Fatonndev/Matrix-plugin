@@ -1,5 +1,6 @@
 package matrix.discordBot;
 
+import jdk.internal.jline.internal.Log;
 import matrix.discordBot.commands.MainCmd;
 import matrix.discordBot.communication.SendToGame;
 import matrix.utils.Config;
@@ -20,14 +21,16 @@ public class Bot extends ListenerAdapter {
 
     public static void main() throws LoginException, InterruptedException {
 
-        bot.setDisabledCacheFlags(EnumSet.of(CacheFlag.ACTIVITY, CacheFlag.VOICE_STATE));
-        bot.setBulkDeleteSplittingEnabled(false);
-        bot.setCompression(Compression.NONE);
-        bot.setActivity(Activity.watching(Config.get("status")));
-        bot.addEventListeners(new MainCmd());
-        bot.addEventListeners(new SendToGame());
+        if(!Config.get("token").isEmpty()) {
+            bot.setDisabledCacheFlags(EnumSet.of(CacheFlag.ACTIVITY, CacheFlag.VOICE_STATE));
+            bot.setBulkDeleteSplittingEnabled(false);
+            bot.setCompression(Compression.NONE);
+            bot.setActivity(Activity.watching(Config.get("status")));
+            bot.addEventListeners(new MainCmd());
+            bot.addEventListeners(new SendToGame());
 
-        jda = bot.build();
-        jda.awaitReady();
+            jda = bot.build();
+            jda.awaitReady();
+        } else Log.warn("You didn't enter a token in Config.properties!");
     }
 }
