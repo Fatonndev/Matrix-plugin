@@ -43,7 +43,7 @@ Enjoy the plugin
   - [ ] Loading maps via message
   - [ ] Console
 - [ ] Setting up permissions (Via a separate plugin)
-- [ ] Teams
+- [ ] Commands
   - [ ] Teleportation to the players or to the point /tp
   - [ ] Custom /help
   - [ ] Private message /m
