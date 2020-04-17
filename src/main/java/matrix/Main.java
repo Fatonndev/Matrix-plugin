@@ -96,10 +96,10 @@ public class Main extends Plugin{
             SetTeam.set(args, player);
         });
         handler.<Player>register(ConfigTranslate.get("cmd.spawnOre.name"), ConfigTranslate.get("cmd.spawnOre.params"), ConfigTranslate.get("cmd.spawnOre.description"), (args, player) -> {
-            SpawnOre.main(player, args);
+            if (player.isAdmin) SpawnOre.main(player, args);
         });
         handler.<Player>register(ConfigTranslate.get("cmd.setBlock.name"), ConfigTranslate.get("cmd.setBlock.params"), ConfigTranslate.get("cmd.setBlock.description"), (args, player) -> {
-            SetBlock.main(player, args);
+            if (player.isAdmin) SetBlock.main(player, args);
         });
         handler.<Player>register(ConfigTranslate.get("cmd.infiniteResources.name"), "<on/off>", ConfigTranslate.get("cmd.infiniteResources.description"), (args, player) -> {
             if(player.isAdmin && Boolean.parseBoolean(Config.get("infiniteResourcesCmd"))) {
