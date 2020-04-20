@@ -114,11 +114,11 @@ public class Main extends Plugin{
                 // Ответ js интерпретатора сервера
                 String result = Vars.mods.getScripts().runConsole(arg[0]);
                 
-                Log.info("&lyServer: &lb{0}", result);
+                Log.info("&lyJS: &lb{0}", result);
                 player.sendMessage("[scarlet][[[accent]JS[scarlet]]: [lightgray]" + result);
                 
-                //Послать всем игрокам
-                //Call.sendMessage("[scarlet][[[accent]JS[scarlet]]: [lightgray]" + text);
+                // Послать всем игрокам
+                //Call.sendMessage("[scarlet][[[accent]JS[scarlet]]: [lightgray]" + result);
             } else player.sendMessage("[scarlet][[[accent]JS[scarlet]]: [accent]" + ConfigTranslate.get("cmd.js.isNotAdmin"));
             
         });
