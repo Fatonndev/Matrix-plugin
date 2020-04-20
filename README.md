@@ -61,8 +61,8 @@ Enjoy the plugin
 | bc | <message> | Sends a pop-up window to players | Administrator |
 | js | <code> | Executes js code | Administrator |
 | gameover |  | Ends the game | Administrator |
-| tppos | <x> <y> | TP to position | Player |
-| tp | <player name> | TP to Player | Player |
+| tppos | <x, y> | TP to position | Player |
+| tp | <playerName> | TP to Player | Player |
 
 ## Server commands
 
