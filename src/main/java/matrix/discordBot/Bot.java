@@ -1,6 +1,5 @@
 package matrix.discordBot;
 
-import jdk.internal.jline.internal.Log;
 import matrix.discordBot.commands.MainCmd;
 import matrix.discordBot.communication.SendToGame;
 import matrix.utils.Config;
@@ -13,6 +12,8 @@ import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
 import javax.security.auth.login.LoginException;
 import java.util.EnumSet;
+
+import static arc.util.Log.*;
 
 public class Bot extends ListenerAdapter {
 
@@ -31,6 +32,6 @@ public class Bot extends ListenerAdapter {
 
             jda = bot.build();
             jda.awaitReady();
-        } else Log.warn("You didn't enter a token in Config.properties!");
+        } else warn("You didn't enter a token in Config.properties!");
     }
 }
