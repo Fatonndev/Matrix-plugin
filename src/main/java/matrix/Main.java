@@ -114,7 +114,7 @@ public class Main extends Plugin{
                 // Ответ js интерпретатора сервера
                 String result = Vars.mods.getScripts().runConsole(arg[0]);
                 
-                Log.info("&lmJS: &lc", result);
+                Log.info("&lmJS: &lc" + result);
                 player.sendMessage("[gray][[[#F7E018]JS[gray]]: [lightgray]" + result);
                 
                 // Послать всем игрокам
