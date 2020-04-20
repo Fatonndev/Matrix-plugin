@@ -1,6 +1,7 @@
 package matrix.discordBot;
 
-import jdk.internal.jline.internal.Log;
+import static arc.util.Log;
+
 import matrix.discordBot.commands.MainCmd;
 import matrix.discordBot.communication.SendToGame;
 import matrix.utils.Config;
