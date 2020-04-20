@@ -3,17 +3,21 @@ package matrix;
 import arc.*;
 import arc.util.*;
 
+import jdk.vm.ci.code.site.Call;
 import matrix.commands.client.*;
 import matrix.discordBot.communication.SendToDiscord;
 import matrix.utils.*;
 
 import mindustry.*;
+import mindustry.core.GameState;
 import mindustry.entities.type.*;
 import mindustry.game.EventType;
+import mindustry.game.Team;
 import mindustry.plugin.Plugin;
 import matrix.discordBot.Bot;
 
 import javax.security.auth.login.LoginException;
+import java.io.IOException;
 
 public class Main extends Plugin{
 
@@ -86,7 +90,11 @@ public class Main extends Plugin{
 
     @Override
     public void registerServerCommands(CommandHandler handler){
-        handler.register("ping", "Return \"Pong!\"", args -> { Log.info("Pong!"); });
+        handler.register("ping", "Return \"Pong!\"", arg -> { Log.info("Pong!"); });
+
+        handler.register("nogui", "Auto start for minecraft hosting", arg -> {
+        });
+
     }
 
     @Override
@@ -95,12 +103,33 @@ public class Main extends Plugin{
         handler.<Player>register(ConfigTranslate.get("cmd.setTeam.name"), ConfigTranslate.get("cmd.setTeam.params"), ConfigTranslate.get("cmd.setTeam.description"), (args, player) -> {
             SetTeam.set(args, player);
         });
+
+        handler.<Player>register(ConfigTranslate.get("cmd.gameOver.name"), ConfigTranslate.get("cmd.gameOver.params"), ConfigTranslate.get("cmd.gameOver.description"), (args, player) -> {
+            ш
+            if(Vars.state.is(GameState.State.menu)){
+                Log.err("Not playing a map.");
+                return;
+            }
+            Log.info("&lyCore destroyed.");
+            Events.fire(new EventType.GameOverEvent(Team.crux));
+        });
+
+        handler.<Player>register(ConfigTranslate.get("cmd.tp.name"), ConfigTranslate.get("cmd.tp.params"), ConfigTranslate.get("cmd.tp.description"), (args, player) -> {
+            Teleport.toPoint(player, args);
+        });
+
+        handler.<Player>register(ConfigTranslate.get("cmd.tpToPlayer.name"), ConfigTranslate.get("cmd.tpToPlayer.params"), ConfigTranslate.get("cmd.tpToPlayer.description"), (args, player) -> {
+            Teleport.toPlayer(player, args);
+        });
+
         handler.<Player>register(ConfigTranslate.get("cmd.spawnOre.name"), ConfigTranslate.get("cmd.spawnOre.params"), ConfigTranslate.get("cmd.spawnOre.description"), (args, player) -> {
             if (player.isAdmin) SpawnOre.main(player, args);
         });
+
         handler.<Player>register(ConfigTranslate.get("cmd.setBlock.name"), ConfigTranslate.get("cmd.setBlock.params"), ConfigTranslate.get("cmd.setBlock.description"), (args, player) -> {
             if (player.isAdmin) SetBlock.main(player, args);
         });
+
         handler.<Player>register(ConfigTranslate.get("cmd.infiniteResources.name"), "<on/off>", ConfigTranslate.get("cmd.infiniteResources.description"), (args, player) -> {
             if(player.isAdmin && Boolean.parseBoolean(Config.get("infiniteResourcesCmd"))) {
                 InfiniteResources.set(args, player);
