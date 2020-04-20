@@ -115,11 +115,11 @@ public class Main extends Plugin{
                 String result = Vars.mods.getScripts().runConsole(arg[0]);
                 
                 Log.info("&lmJS: &lc", result);
-                player.sendMessage("[scarlet][[[accent]JS[scarlet]]: [lightgray]" + result);
+                player.sendMessage("[gray][[[#F7E018]JS[gray]]: [lightgray]" + result);
                 
                 // Послать всем игрокам
-                //Call.sendMessage("[scarlet][[[accent]JS[scarlet]]: [lightgray]" + result);
-            } else player.sendMessage("[scarlet][[[accent]JS[scarlet]]: [accent]" + ConfigTranslate.get("cmd.js.isNotAdmin"));
+                //Call.sendMessage("[gray][[[#F7E018]JS[gray]]: [lightgray]" + result);
+            } else player.sendMessage("[gray][[[#F7E018]JS[gray]]: [coral]" + ConfigTranslate.get("cmd.js.isNotAdmin"));
             
         });
     }
