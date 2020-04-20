@@ -1,6 +1,6 @@
 package matrix.discordBot;
 
-import static arc.util.Log;
+import arc.util.Log;
 
 import matrix.discordBot.commands.MainCmd;
 import matrix.discordBot.communication.SendToGame;

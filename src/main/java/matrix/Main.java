@@ -105,7 +105,6 @@ public class Main extends Plugin{
         });
 
         handler.<Player>register(ConfigTranslate.get("cmd.gameOver.name"), ConfigTranslate.get("cmd.gameOver.params"), ConfigTranslate.get("cmd.gameOver.description"), (args, player) -> {
-            ш
             if(Vars.state.is(GameState.State.menu)){
                 Log.err("Not playing a map.");
                 return;
