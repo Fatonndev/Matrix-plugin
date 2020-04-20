@@ -2,6 +2,6 @@
   "name": "Matrix",
   "author": "KeviTV",
   "main": "matrix.Main",
-  "description": "A plugin to demonstrate some basic features.",
+  "description": "A useful utility plug-in; Extension of the basic functionality, Integration with the shell server.",
   "version": 0.0.8.1
 }
