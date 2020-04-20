@@ -44,7 +44,7 @@ Enjoy the plugin
   - [ ] Console
 - [ ] Setting up permissions (Via a separate plugin)
 - [ ] Commands
-  - [ ] Teleportation to the players or to the point /tp
+  - [X] Teleportation to the players or to the point /tp
   - [ ] Custom /help
   - [ ] Private message /m
 - [ ] Code optimization
@@ -60,9 +60,13 @@ Enjoy the plugin
 | infiniteresources | <on/off> | Enables infinite resources on the map | Administrator |
 | bc | <message> | Sends a pop-up window to players | Administrator |
 | js | <code> | Executes js code | Administrator |
+| gameover |  | Ends the game | Administrator |
+| tppos | <x> <y> | TP to position | Player |
+| tp | <player name> | TP to Player | Player |
 
 ## Server commands
 
 | Command | Parameter | Description |
 |:---|:---|:--- |
 | ping |  | Return pong! |
+| nogui |  | Auto start for minecraft hosting |
