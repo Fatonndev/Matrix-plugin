@@ -54,19 +54,19 @@ Enjoy the plugin
 
 | Command | Parameter | Description | Permission
 |:---|:---|:---|:--- |
-| setteam | <team color> | Sets the team by color | Player |
-| spawnore | <radius> <ore name> | Spawn a vein of ore with a radius | Administrator |
-| setblock | <block name from Blocks.java> | Puts a block under the player | Administrator |
-| infiniteresources | <on/off> | Enables infinite resources on the map | Administrator |
-| bc | <message> | Sends a pop-up window to players | Administrator |
-| js | <code> | Executes js code | Administrator |
-| gameover |  | Ends the game | Administrator |
-| tppos | <x, y> | TP to position | Player |
-| tp | <playerName> | TP to Player | Player |
+| `setteam` | `<team color>` | Sets the *team* by color | Player |
+| `spawnore` | `<radius>` `<ore name>` | Spawn a *vein of ore* with a *radius* | Administrator |
+| `setblock` | `<block name from Blocks.java>` | Puts a *block* under the player | Administrator |
+| `infiniteresources` | `<on/off>` | Enables **infinite resources** on the map | Administrator |
+| `bc` | `<message>` | Sends a **pop-up window** to players | Administrator |
+| `js` | `<code>` | Executes **js code** | Administrator |
+| `gameover` | - | Ends the game | Administrator |
+| `tppos` | `<x>` `<y>` | **TP** to *position* | Player |
+| `tp` | `<playerName>` | **TP** to *Player* | Player |
 
 ## Server commands
 
 | Command | Parameter | Description |
 |:---|:---|:--- |
-| ping |  | Return pong! |
-| nogui |  | Auto start for minecraft hosting |
+| `ping` | - | Return **pong**! |
+| `nogui` | - | Auto start for minecraft hosting |
