@@ -135,7 +135,7 @@ public class Main extends Plugin{
                 InfiniteResources.set(args, player);
             }
         });
-        handler.<Player>register(ConfigTranslate.get("cmd.broadcast.name"), "<info...>", ConfigTranslate.get("cmd.infiniteResources.description"), (args, player) -> {
+        handler.<Player>register(ConfigTranslate.get("cmd.broadcast.name"), "<info...>", ConfigTranslate.get("cmd.broadcast.description"), (args, player) -> {
             if (player.isAdmin) Broadcast.bc(args, player);
         });
         handler.<Player>register("js", "<script...>", "Run arbitrary Javascript.", (arg, player) -> {
