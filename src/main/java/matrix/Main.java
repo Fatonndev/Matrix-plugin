@@ -139,7 +139,17 @@ public class Main extends Plugin{
             if (player.isAdmin) Broadcast.bc(args, player);
         });
         handler.<Player>register("js", "<script...>", "Run arbitrary Javascript.", (arg, player) -> {
-            if (player.isAdmin) Vars.mods.getScripts().runConsole(arg[0]);
+            if (player.isAdmin) {
+                // Ответ js интерпретатора сервера
+                String result = Vars.mods.getScripts().runConsole(arg[0]);
+                
+                player.sendMessage("[gray][[[#F7E018]JS[gray]]: [lightgray]" + result);
+                Log.info("&lmJS: &lc" + result);
+                
+                // Послать всем игрокам
+                //Call.sendMessage("[gray][[[#F7E018]JS[gray]]: [lightgray]" + result);
+            } else player.sendMessage("[gray][[[#F7E018]JS[gray]]: [coral]" + ConfigTranslate.get("cmd.js.isNotAdmin"));
+            
         });
     }
 }
