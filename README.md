@@ -1,26 +1,27 @@
-> # Link to Discord support server
-> https://discord.gg/ZYjxmYP
+> ## [Link to Discord support server](https://discord.gg/ZYjxmYP)
+
+***
 
 # Matrix plugin
 This plugin adds most commands to your server.
 
-Features of the plugin:<br>
+## Features of the plugin:<br>
 
-The relationship between Discord and Mindustry, namely:
+### The relationship between Discord and Mindustry, namely:
  - Sending Discord messages to the game
  - Sending game messages to Discord
  - Logging of registered commands
  - Messages about the player's entry/exit
  - View the contents of the core in the shell
  
-New commands for adminitrators:
+### New commands for adminitrators:
  - Spawn of ore with the specified radius
  - Installation of any unit
  - Enable / disable infinite resources
  - JS command in the game itself.
  - Notification for the entire server
  
-In addition, there are other fitches:
+### In addition, there are other fitches:
  - Animated nickname ([animated])
  - Auto moderation of words
  - Inscription at the top of the screen
