@@ -3,5 +3,5 @@
   "author": "KeviTV",
   "main": "matrix.Main",
   "description": "A useful utility plug-in; Extension of the basic functionality, Integration with the shell server.",
-  "version": 0.4
+  "version": 0.0.8.1
 }
