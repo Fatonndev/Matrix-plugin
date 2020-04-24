@@ -1,6 +1,7 @@
 package matrix;
 
 import arc.*;
+import arc.net.Server;
 import arc.util.*;
 
 import matrix.commands.client.*;
@@ -11,12 +12,14 @@ import mindustry.*;
 import mindustry.core.GameState;
 import mindustry.entities.type.*;
 import mindustry.game.EventType;
+import mindustry.game.Gamemode;
 import mindustry.game.Team;
+import mindustry.maps.Map;
 import mindustry.plugin.Plugin;
 import matrix.discordBot.Bot;
+import org.graalvm.compiler.nodes.extended.ValueAnchorNode;
 
 import javax.security.auth.login.LoginException;
-import java.io.IOException;
 
 public class Main extends Plugin{
 
@@ -25,12 +28,17 @@ public class Main extends Plugin{
     public Main() throws LoginException, InterruptedException {
 
         Config.main();
-        Bot.main();
+        if (Config.get("botIsEnabled").equalsIgnoreCase("true")) {
+            Bot.main();
+        } else Log.warn("BOT IS DISABLED");
 
         Events.on(EventType.PlayerJoin.class, event -> {
 
             TitleManager.main();
 
+            // Слишком много крашей
+
+            /*
             if(Boolean.parseBoolean(Config.get("allowFreeAnimatedNick"))) {
                 if (Boolean.parseBoolean(Config.get("allowAnimatedNick")))
                     AnimatedNick.main(event.player);
@@ -39,34 +47,39 @@ public class Main extends Plugin{
                     if (event.player.isAdmin) AnimatedNick.main(event.player);
                 }
             }
+            */
 
-            if(Vars.netServer.admins.getPlayerLimit() != 0) {
-                String sendString = ConfigTranslate.get("onJoin")
-                        .replace("{0}", RemoveColors.main(event.player.name))
-                        .replace("{1}", String.valueOf(Vars.playerGroup.size() + 1))
-                        .replace("{2}", String.valueOf(Vars.netServer.admins.getPlayerLimit()));
-                SendToDiscord.sendBotMessage(sendString);
-            } else {
-                String sendString = ConfigTranslate.get("onJoinUnlimited")
-                        .replace("{0}", RemoveColors.main(event.player.name))
-                        .replace("{1}", String.valueOf(Vars.playerGroup.size() + 1));
-                SendToDiscord.sendBotMessage(sendString);
+            if (Config.get("botIsEnabled").equalsIgnoreCase("true")) {
+                if (Vars.netServer.admins.getPlayerLimit() != 0) {
+                    String sendString = ConfigTranslate.get("onJoin")
+                            .replace("{0}", RemoveColors.main(event.player.name))
+                            .replace("{1}", String.valueOf(Vars.playerGroup.size() + 1))
+                            .replace("{2}", String.valueOf(Vars.netServer.admins.getPlayerLimit()));
+                    SendToDiscord.sendBotMessage(sendString);
+                } else {
+                    String sendString = ConfigTranslate.get("onJoinUnlimited")
+                            .replace("{0}", RemoveColors.main(event.player.name))
+                            .replace("{1}", String.valueOf(Vars.playerGroup.size() + 1));
+                    SendToDiscord.sendBotMessage(sendString);
+                }
             }
 
         });
 
         Events.on(EventType.PlayerLeave.class, event -> {
-            if(Vars.netServer.admins.getPlayerLimit() != 0) {
-                String sendString = ConfigTranslate.get("onLeave")
-                        .replace("{0}", RemoveColors.main(event.player.name))
-                        .replace("{1}", String.valueOf(Vars.playerGroup.size() - 1))
-                        .replace("{2}", String.valueOf(Vars.netServer.admins.getPlayerLimit()));
-                SendToDiscord.sendBotMessage(sendString);
-            } else {
-                String sendString = ConfigTranslate.get("onLeaveUnlimited")
-                        .replace("{0}", RemoveColors.main(event.player.name))
-                        .replace("{1}", String.valueOf(Vars.playerGroup.size() - 1));
-                SendToDiscord.sendBotMessage(sendString);
+            if (Config.get("botIsEnabled").equalsIgnoreCase("true")) {
+                if (Vars.netServer.admins.getPlayerLimit() != 0) {
+                    String sendString = ConfigTranslate.get("onLeave")
+                            .replace("{0}", RemoveColors.main(event.player.name))
+                            .replace("{1}", String.valueOf(Vars.playerGroup.size() - 1))
+                            .replace("{2}", String.valueOf(Vars.netServer.admins.getPlayerLimit()));
+                    SendToDiscord.sendBotMessage(sendString);
+                } else {
+                    String sendString = ConfigTranslate.get("onLeaveUnlimited")
+                            .replace("{0}", RemoveColors.main(event.player.name))
+                            .replace("{1}", String.valueOf(Vars.playerGroup.size() - 1));
+                    SendToDiscord.sendBotMessage(sendString);
+                }
             }
         });
 
@@ -75,13 +88,15 @@ public class Main extends Plugin{
             String nick = event.player.name;
 
             // Запускаем проверку на запрещенные слова
-            if(!msg.startsWith("/")) {
-                if (!event.player.isAdmin && Boolean.valueOf(Config.get("chatGuard"))) {
-                    if (!ChatGuard.check(msg)) SendToDiscord.send(nick, RemoveColors.main(msg));
-                } else {
-                    SendToDiscord.send(nick, RemoveColors.main(msg));
-                }
-            } else SendToDiscord.log(nick, msg);
+            if (Config.get("botIsEnabled").equalsIgnoreCase("true")) {
+                if (!msg.startsWith("/")) {
+                    if (!event.player.isAdmin && Boolean.valueOf(Config.get("chatGuard"))) {
+                        if (!ChatGuard.check(msg)) SendToDiscord.send(nick, RemoveColors.main(msg));
+                    } else {
+                        SendToDiscord.send(nick, RemoveColors.main(msg));
+                    }
+                } else SendToDiscord.log(nick, msg);
+            }
 
         });
 
@@ -92,6 +107,10 @@ public class Main extends Plugin{
         handler.register("ping", "Return \"Pong!\"", arg -> { Log.info("Pong!"); });
 
         handler.register("nogui", "Auto start for minecraft hosting", arg -> {
+            if(Vars.state.is(GameState.State.playing)) {
+                Log.err("Already hosting. Type 'stop' to stop hosting first.");
+                return;
+            }
         });
 
     }
