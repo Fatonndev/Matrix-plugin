@@ -1,9 +1,8 @@
 package matrix;
 
 import arc.*;
-import arc.net.Server;
 import arc.util.*;
-
+import com.sun.management.OperatingSystemMXBean;
 import matrix.commands.client.*;
 import matrix.discordBot.communication.SendToDiscord;
 import matrix.utils.*;
@@ -12,14 +11,14 @@ import mindustry.*;
 import mindustry.core.GameState;
 import mindustry.entities.type.*;
 import mindustry.game.EventType;
-import mindustry.game.Gamemode;
 import mindustry.game.Team;
-import mindustry.maps.Map;
 import mindustry.plugin.Plugin;
 import matrix.discordBot.Bot;
-import org.graalvm.compiler.nodes.extended.ValueAnchorNode;
 
 import javax.security.auth.login.LoginException;
+import java.lang.management.ManagementFactory;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class Main extends Plugin{
 
@@ -111,6 +110,15 @@ public class Main extends Plugin{
                 Log.err("Already hosting. Type 'stop' to stop hosting first.");
                 return;
             }
+
+            Log.info(SystemInfo.cpuProcess());
+
+        });
+
+        handler.register("memory", "Return \"Pong!\"", arg -> {
+            Log.info("SYSTEM CPU LOAD: "+SystemInfo.cpu()+"%");
+            Log.info("PROCESS CPU LOAD: "+SystemInfo.cpuProcess()+"%");
+            Log.info("TOTAL RAM LOAD: "+ (100-SystemInfo.ram()) +"%");
         });
 
     }
@@ -154,6 +162,17 @@ public class Main extends Plugin{
         });
         handler.<Player>register(ConfigTranslate.get("cmd.broadcast.name"), "<info...>", ConfigTranslate.get("cmd.broadcast.description"), (args, player) -> {
             if (player.isAdmin) Broadcast.bc(args, player);
+        });
+        handler.<Player>register(ConfigTranslate.get("cmd.memory.name"), "", ConfigTranslate.get("cmd.memory.description"), (args, player) -> {
+            if (player.isAdmin) {
+                player.sendMessage(ConfigTranslate.get("cmd.memory.msg")
+                        .replace("{0}", String.valueOf(SystemInfo.cpu()))
+                        .replace("{1}", String.valueOf(SystemInfo.cpuProcess()))
+                        .replace("{2}", String.valueOf(SystemInfo.ram()))
+                );
+            } else {
+                player.sendMessage(ConfigTranslate.get("cmd.memory.noPex"));
+            }
         });
         handler.<Player>register("js", "<script...>", "Run arbitrary Javascript.", (arg, player) -> {
             if (player.isAdmin) {

@@ -2,6 +2,7 @@ package matrix.discordBot.commands;
 
 import matrix.utils.Config;
 import matrix.utils.ConfigTranslate;
+import mindustry.content.Mechs;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -13,10 +14,13 @@ public class MainCmd extends ListenerAdapter {
         if(event.getAuthor().isBot()) return;
         Message msg = event.getMessage();
         if (msg.getContentRaw().startsWith(Config.get("prefix")+ ConfigTranslate.get("cmd.setMsgChannel.name"))) {
-                SetMsgChannel.main(event);
+            SetMsgChannel.main(event);
         }
         if (msg.getContentRaw().startsWith(Config.get("prefix")+ConfigTranslate.get("cmd.items.name"))) {
             ItemsCmd.main(event);
+        }
+        if (msg.getContentRaw().startsWith(Config.get("prefix")+ConfigTranslate.get("cmd.memory.name"))) {
+            Memory.main(event);
         }
     }
 }
