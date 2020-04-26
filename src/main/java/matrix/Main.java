@@ -86,7 +86,9 @@ public class Main extends Plugin{
             if (Config.get("botIsEnabled").equalsIgnoreCase("true")) {
                 if (!msg.startsWith("/")) {
                     if (!event.player.isAdmin && Boolean.valueOf(Config.get("chatGuard"))) {
-                        if (!ChatGuard.check(msg)) SendToDiscord.send(nick, RemoveColors.main(msg));
+                        if (!ChatGuard.check(msg)) {
+                            SendToDiscord.send(nick, RemoveColors.main(msg));
+                        } else event.player.sendMessage(ConfigTranslate.get("dontSwear"));
                     } else {
                         SendToDiscord.send(nick, RemoveColors.main(msg));
                     }

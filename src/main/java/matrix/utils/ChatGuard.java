@@ -9,7 +9,6 @@ public class ChatGuard {
     public static boolean check (String content){
         String[] Strings = get();
 
-        // Система не из самых лучших
         for (int i=0; i < Strings.length; i++) {
             int finalI = i;
             if (content.indexOf(Strings[finalI]) >= 0){
