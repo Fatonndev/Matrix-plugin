@@ -1,6 +1,5 @@
 package matrix.utils;
 
-import arc.util.Log;
 import com.sun.management.OperatingSystemMXBean;
 
 import java.lang.management.ManagementFactory;

@@ -1,6 +1,5 @@
 package matrix.commands.client;
 
-import arc.util.Log;
 import matrix.utils.ConfigTranslate;
 import mindustry.Vars;
 import mindustry.content.Blocks;

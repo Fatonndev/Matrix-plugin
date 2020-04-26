@@ -2,7 +2,6 @@ package matrix;
 
 import arc.*;
 import arc.util.*;
-import com.sun.management.OperatingSystemMXBean;
 import matrix.commands.client.*;
 import matrix.discordBot.communication.SendToDiscord;
 import matrix.utils.*;
@@ -16,9 +15,6 @@ import mindustry.plugin.Plugin;
 import matrix.discordBot.Bot;
 
 import javax.security.auth.login.LoginException;
-import java.lang.management.ManagementFactory;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 public class Main extends Plugin{
 
