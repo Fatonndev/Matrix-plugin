@@ -1,17 +1,11 @@
 package matrix.discordBot.commands;
 
-import arc.util.io.Streams;
-import javafx.scene.shape.Arc;
 import matrix.utils.ConfigTranslate;
 import mindustry.Vars;
 import mindustry.core.GameState;
-import mindustry.maps.Map;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import okhttp3.internal.ws.RealWebSocket;
-
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
 

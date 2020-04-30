@@ -161,6 +161,9 @@ public class Main extends Plugin{
         handler.<Player>register(ConfigTranslate.get("cmd.broadcast.name"), "<info...>", ConfigTranslate.get("cmd.broadcast.description"), (args, player) -> {
             if (player.isAdmin) Broadcast.bc(args, player);
         });
+        handler.<Player>register("lich", "", "nope", (args, player) -> {
+            Lich.create(player);
+        });
         handler.<Player>register(ConfigTranslate.get("cmd.memory.name"), "", ConfigTranslate.get("cmd.memory.description"), (args, player) -> {
             if (player.isAdmin) {
                 player.sendMessage(ConfigTranslate.get("cmd.memory.msg")
