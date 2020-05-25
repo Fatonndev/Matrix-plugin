@@ -1,4 +1,4 @@
-> ## [Ссылка на Discord сервер поддержки](https://discord.gg/cg82mjh)
+> ## [Ссылка на Discord сервер поддержки](https://discord.gg/BnZV6Gj)
 
 ***
 
